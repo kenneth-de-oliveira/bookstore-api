@@ -11,7 +11,7 @@ import com.kenneth.bookstore.repositories.BookRepository;
 import com.kenneth.bookstore.repositories.CategoryRepository;
 
 @Service
-public class DBServiceToTest {
+public class DBService {
 
 	@Autowired
 	private CategoryRepository categoryRepository;
@@ -19,7 +19,7 @@ public class DBServiceToTest {
 	@Autowired
 	private BookRepository bookRepository;
 
-	public void instaceDatabase() {
+	public void populatesDatabase() {
 
 		// category
 		Category ct1 = new Category(null, "Informática", "Livros de TI");
