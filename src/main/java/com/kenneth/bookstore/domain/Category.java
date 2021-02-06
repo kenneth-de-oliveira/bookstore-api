@@ -20,7 +20,7 @@ public class Category implements Serializable{
 	private Integer id;
 	private String name;
 	private String description;
-
+	
 	@OneToMany(mappedBy = "category")
 	private List<Book> books = new ArrayList<Book>();
 
