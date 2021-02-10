@@ -4,11 +4,13 @@ public class ObjetoNotFoundException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 
-	public ObjetoNotFoundException(String msg, Throwable t) {
-		super(msg, t);
+	public ObjetoNotFoundException(String message, Throwable cause) {
+		super(message, cause);
 	}
 
-	public ObjetoNotFoundException(String msg) {
-		super(msg);
+	public ObjetoNotFoundException(String message) {
+		super(message);
 	}
+
+
 }
