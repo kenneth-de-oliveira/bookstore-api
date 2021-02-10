@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,8 +18,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import com.kenneth.bookstore.domain.Category;
 import com.kenneth.bookstore.dtos.CategoryDTO;
 import com.kenneth.bookstore.services.CategoryService;
-
-import javassist.NotFoundException;
 
 @RestController
 @RequestMapping(value = "/category")
@@ -40,12 +39,18 @@ public class CategoryResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Category> create(@RequestBody Category category) throws NotFoundException{
-		category.setId(null);
+	public ResponseEntity<Category> create(@RequestBody Category category){
 		category = service.create(category);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId())
 				.toUri();
 		return ResponseEntity.created(uri).body(category);
 	}
+	
+	@PutMapping(value = "/{id}")
+	public ResponseEntity<CategoryDTO> update(@RequestBody CategoryDTO obj, final @PathVariable Integer id) {
+		Category newObj = service.update(obj, id);
+		return ResponseEntity.ok().body(new CategoryDTO(newObj));
+	}
 
 }
+	
