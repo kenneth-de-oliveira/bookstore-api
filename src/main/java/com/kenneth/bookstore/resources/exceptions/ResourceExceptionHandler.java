@@ -1,7 +1,5 @@
 package com.kenneth.bookstore.resources.exceptions;
 
-import javax.servlet.ServletRequest;
-
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -13,7 +11,7 @@ import com.kenneth.bookstore.exceptions.ObjetoNotFoundException;
 public class ResourceExceptionHandler {
 
 	@ExceptionHandler(ObjetoNotFoundException.class)
-	public ResponseEntity<StandardError> objetoNotFoundException(ObjetoNotFoundException obj, ServletRequest sr) {
+	public ResponseEntity<StandardError> objetoNotFoundException(ObjetoNotFoundException obj) {
 		StandardError se = new StandardError(System.currentTimeMillis(), HttpStatus.NOT_FOUND.value(),
 				obj.getMessage());
 		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(se);
