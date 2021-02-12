@@ -18,7 +18,7 @@ public class CategoryService {
 	@Autowired
 	private CategoryRepository categoryRepository;
 
-	public Category findById(Integer id) {
+	public Category findById(final Integer id) {
 		Optional<Category> obj = categoryRepository.findById(id);
 		return obj.orElseThrow(() -> new ObjetoNotFoundException(
 				"the object was not found, id:" + id + ", type: " + ObjetoNotFoundException.class.getName()));
