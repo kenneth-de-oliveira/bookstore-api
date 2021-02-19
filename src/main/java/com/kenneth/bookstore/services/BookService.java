@@ -30,4 +30,17 @@ public class BookService {
 		return bookRepository.findAllByCategory(id);
 	}
 
+	public Book update(Integer id, Book newBook) {
+		Book book = this.findById(id);
+		this.updateBook(book, newBook);
+		return bookRepository.save(book);
+	}
+
+	private void updateBook(Book book, Book newBook) {
+		book.setTitle(newBook.getTitle());
+		book.setAuthorName(newBook.getAuthorName());
+		book.setCategory(newBook.getCategory());
+		book.setText(newBook.getText());
+	}
+
 }
