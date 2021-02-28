@@ -30,7 +30,7 @@ public class BookService {
 		return bookRepository.findAllByCategory(id);
 	}
 
-	public Book update(Integer id, Book newBook) {
+	public Book update(final Integer id, Book newBook) {
 		Book book = this.findById(id);
 		this.updateBook(book, newBook);
 		return bookRepository.save(book);
@@ -41,6 +41,11 @@ public class BookService {
 		book.setAuthorName(newBook.getAuthorName());
 		book.setCategory(newBook.getCategory());
 		book.setText(newBook.getText());
+	}
+
+	public void delete(final Integer id) {
+		this.findById(id);
+		bookRepository.deleteById(id);
 	}
 
 }
