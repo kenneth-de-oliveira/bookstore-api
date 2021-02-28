@@ -4,8 +4,11 @@ import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,6 +23,7 @@ import com.kenneth.bookstore.domain.Category;
 import com.kenneth.bookstore.dtos.CategoryDTO;
 import com.kenneth.bookstore.services.CategoryService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/category")
 public class CategoryResource {
@@ -40,7 +44,7 @@ public class CategoryResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Category> create(@RequestBody Category category) {
+	public ResponseEntity<Category> create(@Valid @RequestBody Category category) {
 		category = service.create(category);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId())
 				.toUri();
@@ -48,7 +52,7 @@ public class CategoryResource {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CategoryDTO> update(@RequestBody CategoryDTO newObj, @PathVariable Integer id) {
+	public ResponseEntity<CategoryDTO> update(@Valid @RequestBody CategoryDTO newObj, @PathVariable Integer id) {
 		Category objUpdated = service.update(newObj, id);
 		return ResponseEntity.ok().body(new CategoryDTO(objUpdated));
 	}

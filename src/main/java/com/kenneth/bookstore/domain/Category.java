@@ -9,6 +9,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity(name = "tb_category")
 public class Category implements Serializable{
@@ -18,7 +21,13 @@ public class Category implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
+	
+	@NotEmpty(message = "Enter into name")
+	@Length(min = 3, max = 100, message = "The name field must be 3 to 100 characters long")
 	private String name;
+	
+	@NotEmpty(message = "Enter into description")
+	@Length(min = 3, max = 100, message = "The description field must be 3 to 100 characters long")
 	private String description;
 	
 	@OneToMany(mappedBy = "category")

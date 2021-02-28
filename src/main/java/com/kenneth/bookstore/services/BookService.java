@@ -3,6 +3,8 @@ package com.kenneth.bookstore.services;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +48,11 @@ public class BookService {
 	public void delete(final Integer id) {
 		this.findById(id);
 		bookRepository.deleteById(id);
+	}
+
+	public Book create(@Valid Book book) {
+		book.setId(null);
+		return bookRepository.save(book);
 	}
 
 }

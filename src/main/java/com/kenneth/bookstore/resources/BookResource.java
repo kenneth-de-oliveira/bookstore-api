@@ -3,12 +3,16 @@ package com.kenneth.bookstore.resources;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +23,7 @@ import com.kenneth.bookstore.domain.Book;
 import com.kenneth.bookstore.dtos.BookDTO;
 import com.kenneth.bookstore.services.BookService;
 
+@CrossOrigin("*")
 @RestController
 @RequestMapping(value = "/book")
 public class BookResource {
@@ -42,19 +47,24 @@ public class BookResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Book> update(@PathVariable final Integer id, @RequestBody Book newBook){
+	public ResponseEntity<Book> update(@PathVariable final Integer id, @Valid @RequestBody Book newBook){
 		Book obj = service.update(id, newBook);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@PatchMapping(value = "/{id}")
-	public ResponseEntity<Book> updatePatch(@PathVariable final Integer id, @RequestBody Book newBook){
+	public ResponseEntity<Book> updatePatch(@PathVariable final Integer id, @Valid @RequestBody Book newBook){
 		Book obj = service.update(id, newBook);
 		return ResponseEntity.ok().body(obj);
 	}
 	
+	@PostMapping
+	public ResponseEntity<Book> create(@Valid @RequestBody Book book) {
+		book = service.create(book);
+		return ResponseEntity.ok().body(book);
+	}
+	
 	@DeleteMapping(value = "/{id}")
-//	localhost:8080/book/1
 	public ResponseEntity<Void> delete(@PathVariable final Integer id){
 		service.delete(id);
 		return ResponseEntity.noContent().build();
