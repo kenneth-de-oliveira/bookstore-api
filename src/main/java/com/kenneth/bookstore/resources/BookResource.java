@@ -6,6 +6,7 @@ import java.util.stream.Collectors;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -41,6 +42,12 @@ public class BookResource {
 	
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<Book> update(@PathVariable final Integer id, @RequestBody Book newBook){
+		Book obj = service.update(id, newBook);
+		return ResponseEntity.ok().body(obj);
+	}
+	
+	@PatchMapping(value = "/{id}")
+	public ResponseEntity<Book> updatePatch(@PathVariable final Integer id, @RequestBody Book newBook){
 		Book obj = service.update(id, newBook);
 		return ResponseEntity.ok().body(obj);
 	}
