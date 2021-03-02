@@ -1,7 +1,7 @@
 *API de livraria*
 ========================================================================
 Foi desenvolvido uma REST api, no intuito de fixar conceitos como orientação a objetos, encapsulamento, rest api entre outros assuntos abordados no curso do professor Valdir Cezar. O sistema 
-cadatra uma categoria para diversos livros, atualiza e lista livros por categoria como também deleta um livro existente. Foram implementados alguns dos recursos disponíveis
+cadastra uma categoria para diversos livros, atualiza e lista livros por categoria, como também deleta um livro existente. Foram implementados alguns dos recursos disponíveis
 abaixo.
 
 **Alguns dos recursos utilizados**
