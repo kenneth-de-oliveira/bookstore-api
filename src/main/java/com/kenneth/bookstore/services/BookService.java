@@ -3,12 +3,11 @@ package com.kenneth.bookstore.services;
 import java.util.List;
 import java.util.Optional;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kenneth.bookstore.domain.Book;
+import com.kenneth.bookstore.domain.Category;
 import com.kenneth.bookstore.exceptions.ObjetoNotFoundException;
 import com.kenneth.bookstore.repositories.BookRepository;
 
@@ -50,9 +49,11 @@ public class BookService {
 		bookRepository.deleteById(id);
 	}
 
-	public Book create(@Valid Book book) {
-		book.setId(null);
-		return bookRepository.save(book);
+	public Book create(final Integer id_cat, Book obj) {
+		obj.setId(null);
+		Category cat = categoryService.findById(id_cat);
+		obj.setCategory(cat);
+		return bookRepository.save(obj);
 	}
 
 }

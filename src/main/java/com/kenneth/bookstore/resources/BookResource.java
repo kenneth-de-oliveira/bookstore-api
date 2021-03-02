@@ -1,5 +1,6 @@
 package com.kenneth.bookstore.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -18,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.kenneth.bookstore.domain.Book;
 import com.kenneth.bookstore.dtos.BookDTO;
@@ -59,9 +61,11 @@ public class BookResource {
 	}
 	
 	@PostMapping
-	public ResponseEntity<Book> create(@Valid @RequestBody Book book) {
-		book = service.create(book);
-		return ResponseEntity.ok().body(book);
+	public ResponseEntity<Book> create(@RequestParam(value = "category", defaultValue = "0") final Integer id_cat, @Valid @RequestBody Book book) {
+		book = service.create(id_cat, book);
+		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}")
+				.buildAndExpand(book.getId()).toUri();
+		return ResponseEntity.created(uri).body(book);
 	}
 	
 	@DeleteMapping(value = "/{id}")
