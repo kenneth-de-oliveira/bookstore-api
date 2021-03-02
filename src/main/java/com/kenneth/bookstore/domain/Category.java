@@ -22,11 +22,11 @@ public class Category implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty(message = "Enter into name")
+	@NotEmpty(message = "Enter a name for your category")
 	@Length(min = 3, max = 100, message = "The name field must be 3 to 100 characters long")
 	private String name;
 	
-	@NotEmpty(message = "Enter into description")
+	@NotEmpty(message = "Enter a description for your category")
 	@Length(min = 3, max = 100, message = "The description field must be 3 to 100 characters long")
 	private String description;
 	

@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import com.kenneth.bookstore.domain.Category;
 import com.kenneth.bookstore.dtos.CategoryDTO;
+import com.kenneth.bookstore.exceptions.DataIntegrityViolationException;
 import com.kenneth.bookstore.exceptions.ObjetoNotFoundException;
 import com.kenneth.bookstore.repositories.CategoryRepository;
 
@@ -45,7 +45,7 @@ public class CategoryService {
 		try {
 			categoryRepository.deleteById(id);
 		} catch (DataIntegrityViolationException e) {
-			throw new com.kenneth.bookstore.exceptions.DataIntegrityViolationException("Category cannot be deleted!");
+			throw new DataIntegrityViolationException("Category cannot be deleted!");
 		}
 	}
 

@@ -23,15 +23,15 @@ public class Book implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty(message = "Enter into title")
+	@NotEmpty(message = "Enter a title for your Book")
 	@Length(min = 3, max = 100, message = "The title field must be 3 to 50 characters long")
 	private String title;
 	
-	@NotEmpty(message = "Enter into author name")
+	@NotEmpty(message = "Enter the name of the author of the Book")
 	@Length(min = 3, max = 100, message = "The author name field must be 3 to 50 characters long")
 	private String authorName;
 	
-	@NotEmpty(message = "Enter into text")
+	@NotEmpty(message = "Insert book content")
 	@Length(min = 3, max = 2000000, message = "The text field must be 3 to 2000000 characters long")
 	private String text;
 
