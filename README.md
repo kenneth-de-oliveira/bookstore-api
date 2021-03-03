@@ -1,7 +1,9 @@
-**Rest API de livraria digital**
+**Boostore API**
 ========================================================================
 
-**Alguns dos recursos utilizados**
+This project aims to simulate a digital bookstore, in which the following functionalities are challenged: list the various categories of books, search for a book, delete and update.
+
+**Some of the resources used**
 - Git 
 - Maven 
 - Spring Boot 
@@ -10,9 +12,9 @@
 - JPA (Hibernate) 
 - Spring Data 
 
-EXEMPLOS DE EXECUÇÃO
+EXAMPLES OF EXECUTION
 
-Listar todas as categoria e seus respectivos livros GET: http://localhost:8080/category/1
+List all categories and their respective GET books: http://localhost:8080/category/1
 
 ```json
 {
@@ -41,8 +43,7 @@ Listar todas as categoria e seus respectivos livros GET: http://localhost:8080/c
     ]
 }
 ```
-
-Listar todas as categorias GET: http://localhost:8080/category
+List all categories GET: http://localhost:8080/category
 
 ```json
 [
@@ -63,8 +64,7 @@ Listar todas as categorias GET: http://localhost:8080/category
     }
 ]
 ```
-
-Cria uma nova categoria POST: http://localhost:8080/category
+Create a new category POST: http://localhost:8080/category
 
 ```json
 {
@@ -72,8 +72,16 @@ Cria uma nova categoria POST: http://localhost:8080/category
     "description" : "This is description"
 }
 ```
+Updates an existing book PUT: http://localhost:8080/category/1
 
-Lista um livro específico GET: localhost:8080/book/1
+```json
+{
+   "id": 1,
+   "name": "New name",
+   "description": "Livros de TI"
+}
+```
+List a specific book GET: localhost:8080/book/1
 
 ```json
 {
@@ -83,8 +91,7 @@ Lista um livro específico GET: localhost:8080/book/1
     "text": "Lorem Ipsum"
 }
 ```
-
-Criar livro para uma determinada categoria POST: localhost:8080/book?category=1
+Create book for a certain category POST: localhost:8080/book?category=1
 
 ```json
 {
@@ -93,8 +100,7 @@ Criar livro para uma determinada categoria POST: localhost:8080/book?category=1
     "text": "this is text to Book"
 }
 ```
-
-Lista livros de uma determinada categoria GET: localhost:8080/book?category=1
+Lists books of a specific GET category: localhost:8080/book?category=1
 
 ```json
 [
@@ -116,8 +122,7 @@ Lista livros de uma determinada categoria GET: localhost:8080/book?category=1
     }
 ]
 ```
-
-Atualiza um livro existente POST: localhost:8080/book?category=1
+Updates an existing book POST: localhost:8080/book?category=1
 
 ```json
 {
@@ -125,16 +130,5 @@ Atualiza um livro existente POST: localhost:8080/book?category=1
     "title": "Engenharia de Software: Uma Abordagem Profissional",
     "authorName": "New Author Name",
     "text": "Lorem Ipsum"
-}
-```
-
-
-Atualiza um livro existente PUT: http://localhost:8080/category/1
-
-```json
-{
-   "id": 1,
-   "name": "New name",
-   "description": "Livros de TI"
 }
 ```
