@@ -1,4 +1,4 @@
-**API Rest de livraria**
+**Rest API de livraria digital**
 ========================================================================
 
 **Alguns dos recursos utilizados**
