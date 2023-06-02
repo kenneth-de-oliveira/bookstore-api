@@ -1,6 +1,7 @@
 package com.kenneth.bookstore.resources;
 
 import java.net.URI;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,19 +50,19 @@ public class BookResource {
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Book> update(@PathVariable final Integer id, @Valid @RequestBody Book newBook){
+	public ResponseEntity<Book> update(@PathVariable final Integer id, @Valid @RequestBody Book newBook) throws NoSuchAlgorithmException {
 		Book obj = service.update(id, newBook);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@PatchMapping(value = "/{id}")
-	public ResponseEntity<Book> updatePatch(@PathVariable final Integer id, @Valid @RequestBody Book newBook){
+	public ResponseEntity<Book> updatePatch(@PathVariable final Integer id, @Valid @RequestBody Book newBook) throws NoSuchAlgorithmException {
 		Book obj = service.update(id, newBook);
 		return ResponseEntity.ok().body(obj);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Book> create(@RequestParam(value = "category", defaultValue = "0") final Integer id_cat, @Valid @RequestBody Book book) {
+	public ResponseEntity<Book> create(@RequestParam(value = "category", defaultValue = "0") final Integer id_cat, @Valid @RequestBody Book book) throws NoSuchAlgorithmException {
 		book = service.create(id_cat, book);
 		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}")
 				.buildAndExpand(book.getId()).toUri();
@@ -73,5 +74,5 @@ public class BookResource {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}
- 
+
 }

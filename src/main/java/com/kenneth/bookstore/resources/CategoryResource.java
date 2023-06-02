@@ -1,6 +1,7 @@
 package com.kenneth.bookstore.resources;
 
 import java.net.URI;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -44,7 +45,7 @@ public class CategoryResource {
 	}
 
 	@PostMapping
-	public ResponseEntity<Category> create(@Valid @RequestBody Category category) {
+	public ResponseEntity<Category> create(@Valid @RequestBody Category category) throws NoSuchAlgorithmException {
 		category = service.create(category);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId())
 				.toUri();
@@ -52,7 +53,7 @@ public class CategoryResource {
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CategoryDTO> update(@Valid @RequestBody CategoryDTO newObj, @PathVariable Integer id) {
+	public ResponseEntity<CategoryDTO> update(@Valid @RequestBody Category newObj, @PathVariable Integer id) throws NoSuchAlgorithmException {
 		Category objUpdated = service.update(newObj, id);
 		return ResponseEntity.ok().body(new CategoryDTO(objUpdated));
 	}
