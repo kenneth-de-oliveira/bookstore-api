@@ -92,9 +92,8 @@ public class DBService {
 	@Bean
 	public void populatesDatabase() {
 
-		// category
-		Category ct1 = new Category(1, "Informática", "Livros de TI");
-		Category ct2 = new Category(2, "ficção cientifica", "Livros de ficção cientifica");
+		Category ct1 = new Category(1, "Informatica", "Livros de TI");
+		Category ct2 = new Category(2, "ficcao cientifica", "Livros de ficcao cientifica");
 		Category ct3 = new Category(3, "Terror", "Livros de Terror");
 
 		// book
@@ -104,11 +103,11 @@ public class DBService {
 		Book b4 = new Book(4, "Neuromancer", "William Gibson", "Lorem Ipsum", ct2);
 		Book b5 = new Book(5, "Fahrenheit 451", "Ray Bradbury", "Lorem Ipsum", ct2);
 		Book b6 = new Book(6, "Frankenstein", "Mary Shelley", "Lorem Ipsum", ct3);
-		Book b7 = new Book(7, "Drácula", "Bram Stoker", "Lorem Ipsum", ct3);
+		Book b7 = new Book(7, "Dracula", "Bram Stoker", "Lorem Ipsum", ct3);
 		Book b8 = new Book(8, "O Chamado de Cthulhu", "H. P. Lovecraft", "Lorem Ipsum", ct3);
 		Book b9 = new Book(9, "Engenharia de Software: Uma Abordagem Profissional", "Roger Pressman", "Lorem Ipsum", ct1);
-		Book b10 = new Book(10, "Big Data: Como extrair volume, variedade, velocidade e valor da avalanche de informação cotidiana", "Kenneth Cukier e Viktor Mayer-schonberer", "Lorem Ipsum", ct1);
-		Book b11 = new Book(11, "Linux a Bíblia: O Mais Abrangente e Definitivo Guia Sobre Linux", "Christopher Negus", "Lorem Ipsum", ct1);
+		Book b10 = new Book(10, "Big Data: Como extrair volume, variedade, velocidade e valor da avalanche de informacao cotidiana", "Kenneth Cukier e Viktor Mayer-schonberer", "Lorem Ipsum", ct1);
+		Book b11 = new Book(11, "Linux a Biblia: O Mais Abrangente e Definitivo Guia Sobre Linux", "Christopher Negus", "Lorem Ipsum", ct1);
 
 		ct1.getBooks().addAll(Arrays.asList(b1, b9, b10, b11));
 		ct2.getBooks().addAll(Arrays.asList(b2, b3, b4, b5));

@@ -2,42 +2,18 @@ package com.kenneth.bookstore.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.Length;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-@Entity(name = "tb_book")
 public class Book implements Serializable{
 
 	private static final long serialVersionUID = 1L;
 	
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	
-	@NotEmpty(message = "Enter a title for your Book")
-	@Length(min = 3, max = 100, message = "The title field must be 3 to 50 characters long")
 	private String title;
-	
-	@NotEmpty(message = "Enter the name of the author of the Book")
-	@Length(min = 3, max = 100, message = "The author name field must be 3 to 50 characters long")
+
 	private String authorName;
-	
-	@NotEmpty(message = "Insert book content")
-	@Length(min = 3, max = 2000000, message = "The text field must be 3 to 2000000 characters long")
+
 	private String text;
 
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "category_id")
 	private Category category;
 
 	public Book() {
