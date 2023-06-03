@@ -3,7 +3,7 @@ package com.kenneth.bookstore.mapper;
 import com.kenneth.bookstore.dto.BookDTO;
 import com.kenneth.bookstore.entity.Book;
 import com.kenneth.bookstore.factory.BookStoreApiFactory;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.junit.jupiter.api.Assertions.*;
