@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 import javax.validation.constraints.NotEmpty;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Length;
 
 import com.kenneth.bookstore.domain.Category;
@@ -12,6 +13,7 @@ public class CategoryDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnore
 	private Integer id;
 	@NotEmpty(message = "Enter into name")
 	@Length(min = 3, max = 100, message = "The name field must be 3 to 100 characters long")

@@ -4,16 +4,30 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+
+import com.kenneth.bookstore.jacoco.ExcludeFromJacocoGeneratedReport;
+import org.hibernate.validator.constraints.Length;
+
+@Entity(name = "tb_category")
 public class Category implements Serializable{
 
 	private static final long serialVersionUID = 1L;
-	
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
-	
+
+	@NotEmpty(message = "Enter a name for your category")
+	@Length(min = 3, max = 100, message = "The name field must be 3 to 100 characters long")
 	private String name;
-	
+
+	@NotEmpty(message = "Enter a description for your category")
+	@Length(min = 3, max = 100, message = "The description field must be 3 to 100 characters long")
 	private String description;
-	
+
+	@OneToMany(mappedBy = "category", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private List<Book> books = new ArrayList<Book>();
 
 	public Category() {
@@ -59,6 +73,7 @@ public class Category implements Serializable{
 		this.books = books;
 	}
 
+	@ExcludeFromJacocoGeneratedReport
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -67,6 +82,7 @@ public class Category implements Serializable{
 		return result;
 	}
 
+	@ExcludeFromJacocoGeneratedReport
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

@@ -67,12 +67,71 @@
 	</dependencies>
 
 	<build>
+
 		<plugins>
+
+			<!-- plugin para gerar relatório de testes -->
+			<!-- 1) mvn clean test -->
+
+<!--			<plugin>-->
+
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-surefire-report-plugin</artifactId>-->
+<!--				<version>3.0.0-M5</version>-->
+
+<!--				&lt;!&ndash; Reports Configuration for test &ndash;&gt;-->
+
+<!--				<executions>-->
+
+<!--					<execution>-->
+<!--						<phase>test</phase>-->
+<!--						<goals>-->
+<!--							<goal>report</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+
+<!--				</executions>-->
+
+<!--			</plugin>-->
+
+
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+
+<!--				mvn clean test jacoco:report    -->
+
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
+				<configuration>
+					<excludes>
+						<exclude>com/kenneth/bookstore/config/DevConfig.class</exclude>
+						<exclude>com/kenneth/bookstore/BookstoreApplication.class</exclude>
+					</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<id>jacoco-prepare</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
 		</plugins>
+
+
+
 	</build>
+
+
+
 
 </project>

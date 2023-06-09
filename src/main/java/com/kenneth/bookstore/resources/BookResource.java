@@ -7,7 +7,9 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.kenneth.bookstore.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -35,9 +37,9 @@ public class BookResource {
 	private BookService service;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Book> findById(final @PathVariable Integer id) {
+	public ResponseEntity<BookDTO> findById(final @PathVariable Integer id) {
 		Book obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(BookMapper.mapperToDTO(obj));
 	}
 
 	@GetMapping
@@ -45,28 +47,28 @@ public class BookResource {
 			@RequestParam(value = "category", defaultValue = "0") final Integer id) {
 		// localhost:8080/book?category=1
 		List<Book> list = service.findAll(id);
-		List<BookDTO> listDTO = list.stream().map(obj -> new BookDTO(obj)).collect(Collectors.toList());
+		List<BookDTO> listDTO = list.stream().map(BookMapper::mapperToDTO).collect(Collectors.toList());
 		return ResponseEntity.ok().body(listDTO);
 	}
 	
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<Book> update(@PathVariable final Integer id, @Valid @RequestBody Book newBook) throws NoSuchAlgorithmException {
+	public ResponseEntity<BookDTO> update(@PathVariable final Integer id, @Valid @RequestBody Book newBook) throws NoSuchAlgorithmException {
 		Book obj = service.update(id, newBook);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(BookMapper.mapperToDTO(obj));
 	}
 	
 	@PatchMapping(value = "/{id}")
-	public ResponseEntity<Book> updatePatch(@PathVariable final Integer id, @Valid @RequestBody Book newBook) throws NoSuchAlgorithmException {
+	public ResponseEntity<BookDTO> updatePatch(@PathVariable final Integer id, @Valid @RequestBody Book newBook) throws NoSuchAlgorithmException {
 		Book obj = service.update(id, newBook);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(BookMapper.mapperToDTO(obj));
 	}
 	
 	@PostMapping
-	public ResponseEntity<Book> create(@RequestParam(value = "category", defaultValue = "0") final Integer id_cat, @Valid @RequestBody Book book) throws NoSuchAlgorithmException {
+	public ResponseEntity<BookDTO> create(@RequestParam(value = "category", defaultValue = "0") final Integer id_cat, @Valid @RequestBody Book book) throws NoSuchAlgorithmException {
 		book = service.create(id_cat, book);
-		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}")
-				.buildAndExpand(book.getId()).toUri();
-		return ResponseEntity.created(uri).body(book);
+//		URI uri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/livros/{id}")
+//				.buildAndExpand(book.getId()).toUri();
+		return new ResponseEntity<>(BookMapper.mapperToDTO(book), HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping(value = "/{id}")

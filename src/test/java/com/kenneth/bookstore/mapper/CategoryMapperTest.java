@@ -1,19 +1,20 @@
 package com.kenneth.bookstore.mapper;
 
+import com.kenneth.bookstore.domain.Category;
 import com.kenneth.bookstore.dtos.CategoryDTO;
-import com.kenneth.bookstore.factory.BookStoreApiFactory;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
+import java.util.ArrayList;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class CategoryMapperTest {
-
 
     @Test
     void mapper_whenToGetCategoryEntity_returnsCategoryDTO() {
 
-        var fake = BookStoreApiFactory.getCategoryList().stream().findFirst().get();
+        var fake = getCategory();
 
         var categoryDTO = CategoryMapper.mapperToDTO(fake);
 
@@ -27,11 +28,7 @@ class CategoryMapperTest {
     @Test
     void mapper_whenToGetCategoryDTO_returnsCategoryEntity() {
 
-        var fake = BookStoreApiFactory.getCategoryList().stream().findFirst().get();
-        var fakeDTO = new CategoryDTO();
-        fakeDTO.setId(fake.getId());
-        fakeDTO.setDescription(fake.getDescription());
-        fakeDTO.setName(fake.getName());
+        var fakeDTO = getCategoryDTO();
 
         var category = CategoryMapper.mapperToEntity(fakeDTO);
 
@@ -42,5 +39,27 @@ class CategoryMapperTest {
 
     }
 
+    public CategoryDTO getCategoryDTO() {
+
+        var fake = new CategoryDTO();
+
+        fake.setId(1);
+        fake.setName("Informatica");
+        fake.setDescription("Livros de TI");
+
+        return fake;
+    }
+
+    public Category getCategory() {
+
+        var fake = new Category();
+
+        fake.setId(1);
+        fake.setName("Informatica");
+        fake.setDescription("Livros de TI");
+        fake.setBooks(new ArrayList<>());
+
+        return fake;
+    }
 
 }

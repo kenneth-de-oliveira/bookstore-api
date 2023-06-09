@@ -7,6 +7,7 @@ import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
+import com.kenneth.bookstore.mapper.CategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -33,29 +34,29 @@ public class CategoryResource {
 	private CategoryService service;
 
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<Category> findById(final @PathVariable Integer id) {
+	public ResponseEntity<CategoryDTO> findById(final @PathVariable Integer id) {
 		Category obj = service.findById(id);
-		return ResponseEntity.ok().body(obj);
+		return ResponseEntity.ok().body(CategoryMapper.mapperToDTO(obj));
 	}
 
 	@GetMapping
 	public ResponseEntity<List<CategoryDTO>> findAll() {
 		return ResponseEntity.ok()
-				.body(service.findAll().stream().map(obj -> new CategoryDTO(obj)).collect(Collectors.toList()));
+				.body(service.findAll().stream().map(CategoryMapper::mapperToDTO).collect(Collectors.toList()));
 	}
 
 	@PostMapping
-	public ResponseEntity<Category> create(@Valid @RequestBody Category category) throws NoSuchAlgorithmException {
+	public ResponseEntity<CategoryDTO> create(@Valid @RequestBody Category category) throws NoSuchAlgorithmException {
 		category = service.create(category);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(category.getId())
 				.toUri();
-		return ResponseEntity.created(uri).body(category);
+		return ResponseEntity.created(uri).body(CategoryMapper.mapperToDTO(category));
 	}
 
 	@PutMapping(value = "/{id}")
-	public ResponseEntity<CategoryDTO> update(@Valid @RequestBody Category newObj, @PathVariable Integer id) throws NoSuchAlgorithmException {
+	public ResponseEntity<CategoryDTO> update(@Valid @RequestBody CategoryDTO newObj, @PathVariable Integer id) throws NoSuchAlgorithmException {
 		Category objUpdated = service.update(newObj, id);
-		return ResponseEntity.ok().body(new CategoryDTO(objUpdated));
+		return ResponseEntity.ok().body(CategoryMapper.mapperToDTO(objUpdated));
 	}
 
 	@DeleteMapping(value = "/{id}")
