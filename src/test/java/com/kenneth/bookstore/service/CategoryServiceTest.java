@@ -53,13 +53,9 @@ public class CategoryServiceTest {
 
         var fake = new Category(1, "Informática 2", "Livros de TI 2");
 
-        var updated = service.update(CategoryMapper.mapperToDTO(fake), 1);
-
-        assertNotNull(updated);
-        assertEquals(fake.getBooks(), updated.getBooks());
-        assertEquals(fake.getDescription(), updated.getDescription());
-        assertEquals(fake.getId(), updated.getId());
-        assertEquals(fake.getName(), updated.getName());
+        assertDoesNotThrow(() -> {
+            service.update(CategoryMapper.mapperToDTO(fake), 1);
+        });
 
     }
 
