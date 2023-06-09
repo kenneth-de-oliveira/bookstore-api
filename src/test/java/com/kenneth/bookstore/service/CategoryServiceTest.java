@@ -2,6 +2,7 @@ package com.kenneth.bookstore.service;
 
 import com.kenneth.bookstore.entity.Category;
 import com.kenneth.bookstore.factory.BookStoreApiFactory;
+import com.kenneth.bookstore.mapper.CategoryMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -52,7 +53,7 @@ public class CategoryServiceTest {
 
         var fake = new Category(1, "Informática 2", "Livros de TI 2");
 
-        var updated = service.update(fake, 1);
+        var updated = service.update(CategoryMapper.mapperToDTO(fake), 1);
 
         assertNotNull(updated);
         assertEquals(fake.getBooks(), updated.getBooks());
