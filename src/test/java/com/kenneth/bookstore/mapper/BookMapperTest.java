@@ -2,20 +2,20 @@ package com.kenneth.bookstore.mapper;
 
 import com.kenneth.bookstore.dto.BookDTO;
 import com.kenneth.bookstore.entity.Book;
-import com.kenneth.bookstore.factory.BookStoreApiFactory;
 import org.junit.jupiter.api.*;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.junit.jupiter.MockitoExtension;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@SpringBootTest
+@ExtendWith(MockitoExtension.class)
 class BookMapperTest {
 
     @Test
     void mapper_whenToGetBookEntity_returnsBookDTO () {
 
         // Arrange
-        var fake = BookStoreApiFactory.getBookList().stream().findFirst().get();
+        var fake = getBook();
 
         // Act
         BookDTO bookDTO = BookMapper.mapperToDTO(fake);
@@ -30,10 +30,8 @@ class BookMapperTest {
     void mapper_whenToGetBookDTO_returnsBookEntity () {
 
         // Arrange
-        var fake = BookStoreApiFactory.getBookList().stream().findFirst().get();
-        var fakeDTO = new BookDTO();
-        fakeDTO.setTitle(fake.getTitle());
-        fakeDTO.setAuthorName(fake.getAuthorName());
+        var fake = getBook();
+        var fakeDTO = getBookDTO();
 
         // Act
         Book book = BookMapper.mapperToEntity(fakeDTO);
@@ -43,6 +41,27 @@ class BookMapperTest {
         assertEquals(fakeDTO.getTitle(), book.getTitle());
 
     }
+
+    private Book getBook() {
+
+        var fake = new Book();
+
+        fake.setTitle("Clean Code");
+        fake.setAuthorName("Robert Martins");
+
+        return fake;
+    }
+
+    private BookDTO getBookDTO() {
+
+        var fake = new BookDTO();
+
+        fake.setTitle("Clean Code");
+        fake.setAuthorName("Robert Martins");
+
+        return fake;
+    }
+
 
 
 }

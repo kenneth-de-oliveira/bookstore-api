@@ -7,6 +7,7 @@ import java.util.List;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 
+import com.kenneth.bookstore.jacoco.ExcludeFromJacocoGeneratedReport;
 import org.hibernate.validator.constraints.Length;
 
 @Entity(name = "tb_category")
@@ -72,6 +73,7 @@ public class Category implements Serializable{
         this.books = books;
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -80,6 +82,7 @@ public class Category implements Serializable{
         return result;
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public boolean equals(Object obj) {
         if (this == obj)

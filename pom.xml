@@ -68,10 +68,80 @@
 
 	<build>
 		<plugins>
+<!--			<plugin>-->
+<!--				<groupId>org.springframework.boot</groupId>-->
+<!--				<artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--			</plugin>-->
+
+<!--			<plugin>-->
+
+<!--				<groupId>org.apache.maven.plugins</groupId>-->
+<!--				<artifactId>maven-surefire-report-plugin</artifactId>-->
+<!--				<version>3.0.0-M5</version>-->
+
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<phase>test</phase>-->
+<!--						<goals>-->
+<!--							<goal>report</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+
+<!--			</plugin>-->
+
+<!--			<plugin>-->
+
+<!--&lt;!&ndash;				mvn clean test jacoco:report &ndash;&gt;-->
+
+<!--				<groupId>org.jacoco</groupId>-->
+<!--				<artifactId>jacoco-maven-plugin</artifactId>-->
+<!--				<version>0.8.7</version>-->
+<!--				<configuration>-->
+<!--					<excludes>-->
+<!--						<exclude>com/kenneth/bookstore/config/DevConfig.class</exclude>-->
+<!--						<exclude>com/kenneth/bookstore/BookstoreApplication.class</exclude>-->
+<!--					</excludes>-->
+<!--				</configuration>-->
+<!--				<executions>-->
+<!--					<execution>-->
+<!--						<id>jacoco-prepare</id>-->
+<!--						<goals>-->
+<!--							<goal>prepare-agent</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--					<execution>-->
+<!--						<id>jacoco-report</id>-->
+<!--						<phase>test</phase>-->
+<!--						<goals>-->
+<!--							<goal>report</goal>-->
+<!--						</goals>-->
+<!--					</execution>-->
+<!--				</executions>-->
+<!--			</plugin>-->
+
 			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
+
+				<groupId>org.pitest</groupId>
+				<artifactId>pitest-maven</artifactId>
+				<version>1.8.0</version>
+
+				<dependencies>
+					<dependency>
+						<groupId>org.pitest</groupId>
+						<artifactId>pitest-junit5-plugin</artifactId>
+						<version>0.14</version>
+					</dependency>
+				</dependencies>
+
+				<configuration>
+					<targetTests>
+						<param>com.kenneth.bookstore.*Test</param>
+					</targetTests>
+				</configuration>
+
 			</plugin>
+
 		</plugins>
 	</build>
 

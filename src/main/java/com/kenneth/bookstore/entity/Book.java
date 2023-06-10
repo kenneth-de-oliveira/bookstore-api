@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 
+import com.kenneth.bookstore.jacoco.ExcludeFromJacocoGeneratedReport;
 import org.hibernate.validator.constraints.Length;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -93,6 +94,7 @@ public class Book implements Serializable{
         this.category = category;
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public int hashCode() {
         final int prime = 31;
@@ -101,6 +103,7 @@ public class Book implements Serializable{
         return result;
     }
 
+    @ExcludeFromJacocoGeneratedReport
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
