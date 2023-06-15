@@ -12,6 +12,7 @@
 	<groupId>com.kenneth</groupId>
 	<artifactId>bookstore</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
+	<packaging>war</packaging>
 	<name>bookstore</name>
 	<description>Project Spring Boot and Angular 10</description>
 	<properties>
@@ -90,57 +91,57 @@
 
 <!--			</plugin>-->
 
-<!--			<plugin>-->
-
-<!--&lt;!&ndash;				mvn clean test jacoco:report &ndash;&gt;-->
-
-<!--				<groupId>org.jacoco</groupId>-->
-<!--				<artifactId>jacoco-maven-plugin</artifactId>-->
-<!--				<version>0.8.7</version>-->
-<!--				<configuration>-->
-<!--					<excludes>-->
-<!--						<exclude>com/kenneth/bookstore/config/DevConfig.class</exclude>-->
-<!--						<exclude>com/kenneth/bookstore/BookstoreApplication.class</exclude>-->
-<!--					</excludes>-->
-<!--				</configuration>-->
-<!--				<executions>-->
-<!--					<execution>-->
-<!--						<id>jacoco-prepare</id>-->
-<!--						<goals>-->
-<!--							<goal>prepare-agent</goal>-->
-<!--						</goals>-->
-<!--					</execution>-->
-<!--					<execution>-->
-<!--						<id>jacoco-report</id>-->
-<!--						<phase>test</phase>-->
-<!--						<goals>-->
-<!--							<goal>report</goal>-->
-<!--						</goals>-->
-<!--					</execution>-->
-<!--				</executions>-->
-<!--			</plugin>-->
-
 			<plugin>
 
-				<groupId>org.pitest</groupId>
-				<artifactId>pitest-maven</artifactId>
-				<version>1.8.0</version>
+<!-- 			mvn clean test jacoco:report  		-->
 
-				<dependencies>
-					<dependency>
-						<groupId>org.pitest</groupId>
-						<artifactId>pitest-junit5-plugin</artifactId>
-						<version>0.14</version>
-					</dependency>
-				</dependencies>
-
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.7</version>
 				<configuration>
-					<targetTests>
-						<param>com.kenneth.bookstore.*Test</param>
-					</targetTests>
+					<excludes>
+						<exclude>com/kenneth/bookstore/config/DevConfig.class</exclude>
+						<exclude>com/kenneth/bookstore/BookstoreApplication.class</exclude>
+					</excludes>
 				</configuration>
-
+				<executions>
+					<execution>
+						<id>jacoco-prepare</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>jacoco-report</id>
+						<phase>test</phase>
+						<goals>
+							<goal>report</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
+
+<!--			<plugin>-->
+
+<!--				<groupId>org.pitest</groupId>-->
+<!--				<artifactId>pitest-maven</artifactId>-->
+<!--				<version>1.8.0</version>-->
+
+<!--				<dependencies>-->
+<!--					<dependency>-->
+<!--						<groupId>org.pitest</groupId>-->
+<!--						<artifactId>pitest-junit5-plugin</artifactId>-->
+<!--						<version>0.14</version>-->
+<!--					</dependency>-->
+<!--				</dependencies>-->
+
+<!--				<configuration>-->
+<!--					<targetTests>-->
+<!--						<param>com.kenneth.bookstore.*Test</param>-->
+<!--					</targetTests>-->
+<!--				</configuration>-->
+
+<!--			</plugin>-->
 
 		</plugins>
 	</build>
