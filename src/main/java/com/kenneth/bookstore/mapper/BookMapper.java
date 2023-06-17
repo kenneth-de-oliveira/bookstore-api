@@ -2,6 +2,7 @@ package com.kenneth.bookstore.mapper;
 
 import com.kenneth.bookstore.dto.BookDTO;
 import com.kenneth.bookstore.entity.Book;
+import com.kenneth.bookstore.exceptions.ObjetoNotFoundException;
 
 public class BookMapper {
 
@@ -10,9 +11,12 @@ public class BookMapper {
     public static BookDTO mapperToDTO(Book book) {
         var bookDTO = new BookDTO();
         bookDTO.setAuthorName(book.getAuthorName());
-        bookDTO.setTitle("book.getTitle()");
 
-        return bookDTO;
+//        return bookDTO;
+//        bookDTO.setTitle(book.getTitle());
+        throw new ObjetoNotFoundException("");
+
+
     }
 
 
