@@ -10,7 +10,7 @@ public class BookMapper {
     public static BookDTO mapperToDTO(Book book) {
         var bookDTO = new BookDTO();
         bookDTO.setAuthorName(book.getAuthorName());
-        bookDTO.setTitle(book.getTitle());
+        bookDTO.setTitle("book.getTitle()");
 
         return bookDTO;
     }
