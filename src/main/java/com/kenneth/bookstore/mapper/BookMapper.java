@@ -11,12 +11,9 @@ public class BookMapper {
     public static BookDTO mapperToDTO(Book book) {
         var bookDTO = new BookDTO();
         bookDTO.setAuthorName(book.getAuthorName());
+        bookDTO.setTitle(book.getTitle());
 
-//        return bookDTO;
-//        bookDTO.setTitle(book.getTitle());
-        throw new ObjetoNotFoundException("");
-
-
+        return bookDTO;
     }
 
 
