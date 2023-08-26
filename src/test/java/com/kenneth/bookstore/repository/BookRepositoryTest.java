@@ -1,7 +1,9 @@
 package com.kenneth.bookstore.repository;
 
-import com.kenneth.bookstore.entity.Book;
-import com.kenneth.bookstore.entity.Category;
+import com.kenneth.bookstore.domain.entity.Book;
+import com.kenneth.bookstore.domain.entity.Category;
+import com.kenneth.bookstore.framework.repository.BookRepository;
+import com.kenneth.bookstore.framework.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;

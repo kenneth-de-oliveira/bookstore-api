@@ -1,8 +1,8 @@
 package com.kenneth.bookstore.resources;
 
-import com.kenneth.bookstore.entity.Book;
-import com.kenneth.bookstore.entity.Category;
-import com.kenneth.bookstore.service.BookService;
+import com.kenneth.bookstore.application.resources.BookResource;
+import com.kenneth.bookstore.domain.entity.Book;
+import com.kenneth.bookstore.domain.entity.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

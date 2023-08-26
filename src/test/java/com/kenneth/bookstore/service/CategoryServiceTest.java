@@ -1,10 +1,10 @@
 package com.kenneth.bookstore.service;
 
-import com.kenneth.bookstore.entity.Category;
-import com.kenneth.bookstore.exceptions.DataIntegrityViolationException;
-import com.kenneth.bookstore.exceptions.ObjetoNotFoundException;
-import com.kenneth.bookstore.mapper.CategoryMapper;
-import com.kenneth.bookstore.repository.CategoryRepository;
+import com.kenneth.bookstore.domain.entity.Category;
+import com.kenneth.bookstore.domain.exceptions.DataIntegrityViolationException;
+import com.kenneth.bookstore.domain.exceptions.ObjetoNotFoundException;
+import com.kenneth.bookstore.domain.mapper.CategoryMapper;
+import com.kenneth.bookstore.framework.repository.CategoryRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

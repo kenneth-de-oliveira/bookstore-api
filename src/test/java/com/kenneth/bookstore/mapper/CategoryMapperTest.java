@@ -1,7 +1,8 @@
 package com.kenneth.bookstore.mapper;
 
-import com.kenneth.bookstore.dto.CategoryDTO;
-import com.kenneth.bookstore.entity.Category;
+import com.kenneth.bookstore.domain.dto.CategoryDTO;
+import com.kenneth.bookstore.domain.entity.Category;
+import com.kenneth.bookstore.domain.mapper.CategoryMapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

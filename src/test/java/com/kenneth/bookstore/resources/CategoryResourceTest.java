@@ -2,7 +2,7 @@ package com.kenneth.bookstore.resources;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.kenneth.bookstore.dto.CategoryDTO;
+import com.kenneth.bookstore.domain.dto.CategoryDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;

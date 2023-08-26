@@ -1,9 +1,9 @@
 package com.kenneth.bookstore.service;
 
-import com.kenneth.bookstore.entity.Book;
-import com.kenneth.bookstore.entity.Category;
-import com.kenneth.bookstore.exceptions.ObjetoNotFoundException;
-import com.kenneth.bookstore.repository.BookRepository;
+import com.kenneth.bookstore.domain.entity.Book;
+import com.kenneth.bookstore.domain.entity.Category;
+import com.kenneth.bookstore.domain.exceptions.ObjetoNotFoundException;
+import com.kenneth.bookstore.framework.repository.BookRepository;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
